@@ -25,6 +25,10 @@ public class User {
     @OneToOne
     @JoinColumn(name = "fk_Address_Id")
     private Address address;
+
+    public Integer getUserId() {
+        return userId;
+    }
 }
 /*User Model:
    Id:integer

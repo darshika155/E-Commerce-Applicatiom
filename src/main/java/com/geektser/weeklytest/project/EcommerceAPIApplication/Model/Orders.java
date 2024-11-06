@@ -32,7 +32,13 @@ public class Orders {
     private Address address;
     private Integer productQuantity;
 
+    public Integer getOrderId() {
+        return orderId;
+    }
 
+    public User getUser() {
+        return user;
+    }
 }
 /*
 

@@ -1,24 +1,38 @@
 package com.geektser.weeklytest.project.EcommerceAPIApplication.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.geektser.weeklytest.project.EcommerceAPIApplication.Model.Product;
 import com.geektser.weeklytest.project.EcommerceAPIApplication.Model.ProductCategory;
 import com.geektser.weeklytest.project.EcommerceAPIApplication.Service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
+//@CrossOrigin(origins = "*")
 public class ProductController {
     @Autowired
     ProductService productService;
 
     //Post
-    @PostMapping("product")
-    public String addAProduct(@RequestBody Product product)
-    {
-        return  productService.addAProduct(product);
+    @PostMapping(value = "product", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public String addAProduct(
+            @RequestPart("product") String productJson,
+            @RequestPart("image") MultipartFile imageFile) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product product = objectMapper.readValue(productJson, Product.class);
+        return  productService.addAProduct(product, imageFile);
     }
 
     @PostMapping("products")
@@ -26,7 +40,7 @@ public class ProductController {
 
 
     @GetMapping("product/{Id}")
-    public Optional<Product> getProduct(@PathVariable Integer Id)
+    public Optional<Product> getProduct(@RequestBody Integer Id)
     {
         return productService.getProduct(Id);
     }
