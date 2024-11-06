@@ -291,16 +291,3 @@ GET http://localhost:8080/api/order/{orderId}
 - **Response:** Returns the order with the specified ID.
 
 ---
-
-## Contributors
-
-- **Pratik Sharma** : [thepratiksharma@gmail.com]()
-
-We welcome contributions and feedback to improve and expand this project.
-
-Contributions to this project are welcome! If you have suggestions, enhancements, or bug fixes, please open an issue or submit a pull request.
-
-
-## Acknowledgments
-
-Special thanks to the Spring Boot and Spring Data JPA communities for their excellent documentation and support. Please note that this README provides an overview of the API endpoints and their functionality. You can use tools like Postman or Swagger UI to interact with the API and test the endpoints in detail.
