@@ -27,6 +27,7 @@ public class ProductController {
 
     //Post
     @PostMapping(value = "product", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @Operation(summary = "Create a new product", description = "Creates a new product with the provided details and an image.")
     public String addAProduct(
             @RequestPart("product") String productJson,
             @RequestPart("image") MultipartFile imageFile) throws Exception {
