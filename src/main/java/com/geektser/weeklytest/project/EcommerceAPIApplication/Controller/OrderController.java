@@ -20,6 +20,7 @@ public class OrderController {
 
     //Post
     @PostMapping("order")
+    @Operation(summary="Create an order", description="Create an order with user and product details.")
     public String placeAnOrder(@RequestBody Orders orders)
     {
         Orders newOrder = orderService.placeAnOrder(orders);
