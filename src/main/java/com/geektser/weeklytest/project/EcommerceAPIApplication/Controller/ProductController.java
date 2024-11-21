@@ -29,7 +29,7 @@ public class ProductController {
     @PostMapping(value = "product", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public String addAProduct(
             @RequestPart("product") String productJson,
-            @RequestPart("image") MultipartFile imageFile) throws Exception {
+            @RequestPart("file") MultipartFile imageFile) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         Product product = objectMapper.readValue(productJson, Product.class);
         return  productService.addAProduct(product, imageFile);
