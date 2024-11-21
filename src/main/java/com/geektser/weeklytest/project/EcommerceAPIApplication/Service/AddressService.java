@@ -26,7 +26,7 @@ public class AddressService {
         return iAddressRepo.findById(id);
     }
 
-    public String addListOfUsers(List<Address> addresses){
+    public String addListOfAddresses(List<Address> addresses){
         iAddressRepo.saveAll(addresses);
         return "Addresses Added :) !";
     }

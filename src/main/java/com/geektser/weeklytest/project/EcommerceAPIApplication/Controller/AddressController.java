@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class AddressController {
     @Autowired
     AddressService addressService;
@@ -30,7 +31,7 @@ public class AddressController {
         return addressService.addAddress(address);
     }
     @PostMapping("addresses")
-    public String addListOfUsers(@RequestBody List<Address> address) {return addressService.addListOfUsers(address);}
+    public String addListOfAddresses(@RequestBody List<Address> address) {return addressService.addListOfAddresses(address);}
 
     @DeleteMapping("address/{id}")
     public String deleteAddressById(@PathVariable Integer id){return addressService.deleteAddressById(id);}

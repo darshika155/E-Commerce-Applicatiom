@@ -17,9 +17,8 @@ public class OrderService {
         return iOrderRepo.findById(id);
     }
 
-    public String placeAnOrder(Orders order){
-        iOrderRepo.save(order);
-        return "Order Placed :) !";
+    public Orders placeAnOrder(Orders order){
+        return iOrderRepo.save(order);
     }
 
     public List<Orders> getAllOrders(){

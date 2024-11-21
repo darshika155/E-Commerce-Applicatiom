@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
     @Autowired
     UserService userService;
@@ -20,7 +21,7 @@ public class UserController {
         return userService.addUser(user);
     }
     @PostMapping("users")
-    public String addListOfUsers(@PathVariable List<User> users){
+    public String addListOfUsers(@RequestBody List<User> users){
         return userService.addListOfUsers(users);
     }
 
